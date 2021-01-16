@@ -1,10 +1,75 @@
 import React, {useState} from 'react';
-import {Box, Button, Container, Grid, makeStyles, Typography} from '@material-ui/core';
+import {
+    Box,
+    Button,
+    Container,
+    Dialog,
+    DialogActions, DialogContent, DialogContentText, DialogTitle,
+    Grid,
+    makeStyles,
+    TextField,
+    Typography
+} from '@material-ui/core';
 import Event from "./Event";
 
-const useStyles = makeStyles((theme) => ({}))
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}))
+function rand() {
+    return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+
+    return {
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
+    };
+}
+
+function AddDialog(props) {
+    return (
+        <React.Fragment>
+            <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    To subscribe to this website, please enter your email address here. We will send updates
+                    occasionally.
+                </DialogContentText>
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Email Address"
+                    type="email"
+                    fullWidth
+                />
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={props.toggleDialog} color="primary">
+                    Cancel
+                </Button>
+                <Button onClick={props.toggleDialog} color="primary">
+                    Subscribe
+                </Button>
+            </DialogActions>
+        </React.Fragment>
+    )
+}
 
 export default function EventBoard() {
+    const [modalStyle] = React.useState(getModalStyle);
+    const [openDialog, setOpenDialog] = useState(false)
     const [events, setEvents] = useState([
         {
             id: 1,
@@ -18,6 +83,10 @@ export default function EventBoard() {
         }
     ])
     const classes = useStyles();
+    const toggleDialog = () => {
+        setOpenDialog(!openDialog)
+    }
+
     return (
         <React.Fragment>
             <Container maxWidth="lg">
@@ -38,7 +107,7 @@ export default function EventBoard() {
                                 ))}
                             </Box>
                             <Box textAlign="center">
-                                <Button>
+                                <Button onClick={toggleDialog}>
                                     Add Event
                                 </Button>
                             </Box>
@@ -68,6 +137,14 @@ export default function EventBoard() {
                     </Grid>
                 </Box>
             </Container>
+
+            <Dialog
+                open={openDialog}
+                onClose={toggleDialog}
+                aria-labelledby="form-dialog-title"
+            >
+                <AddDialog toggleDialog={toggleDialog} />
+            </Dialog>
         </React.Fragment>
     )
 }
