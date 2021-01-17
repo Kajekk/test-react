@@ -37,7 +37,9 @@ export default function Event(props) {
                                 </Grid>
                             </Grid>
                             <Grid item>
-                                <DeleteIcon />
+                                <DeleteIcon onClick={() => {
+                                    props.onDelete(props.id);
+                                }} />
                             </Grid>
                         </Grid>
                     </Grid>
