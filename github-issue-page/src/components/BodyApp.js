@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-    Box,
-    Grid,
-    Typography,
-    createMuiTheme,
-    ThemeProvider, Button
-} from '@material-ui/core';
+import {Box, Grid, Typography} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import withStyles from "@material-ui/core/styles/withStyles";
 import {green} from "@material-ui/core/colors";
 import IssueRootDashboard from "./IssueRootDashboard";
@@ -13,7 +9,8 @@ import IssueRootDashboard from "./IssueRootDashboard";
 const useStyles = theme => ({
     containerSection: {
         padding: 16,
-        backgroundImage: "linear-gradient(180deg,transparent 60%, #FFF),linear-gradient(70deg, #F1F8FF 32%, #DCFFE4);"
+        backgroundImage: "linear-gradient(180deg,transparent 60%, #FFF),linear-gradient(70deg, #F1F8FF 32%, #DCFFE4);",
+        borderBottom: "1px solid #eaecef"
     },
     sectionContain: {
         textAlign: "center",
@@ -37,8 +34,8 @@ const theme = createMuiTheme({
 function BodyApp() {
     return (
         <React.Fragment>
-            <IntroSectionWithStyle />
-            <IssueRootDashboard />
+            <IntroSectionWithStyle/>
+            <IssueRootDashboard/>
         </React.Fragment>
     )
 }

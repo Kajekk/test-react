@@ -1,13 +1,6 @@
 import React from 'react';
 import {Box, Button, Container, Grid, Typography, Tabs, Tab} from '@material-ui/core';
 import withStyles from "@material-ui/core/styles/withStyles";
-import PhoneIcon from "@material-ui/icons/Phone";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import HelpIcon from "@material-ui/icons/Help";
-import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
-import ThumbDown from "@material-ui/icons/ThumbDown";
-import ThumbUp from "@material-ui/icons/ThumbUp";
 
 const useStyles = theme => ({
     containerSection: {
@@ -20,14 +13,30 @@ const useStyles = theme => ({
     margin: {
         margin: theme.spacing(1),
     },
+    headerContainer: {
+        marginBottom: theme.spacing(4),
+        borderBottom: "1px solid #eaecef"
+    }
 })
 
-function HeaderIssueRootDashboard() {
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
+function HeaderIssueRootDashboard({classes}) {
+    const [value, setValue] = React.useState(0);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return (
         <React.Fragment>
-            <Container>
-                <Grid container justify="center" alignContent="center">
-                    <Grid item>
+            <Container className={classes.headerContainer}>
+                <Grid container>
+                    <Grid item xs={3} container alignContent="center">
                         <Typography variant="subtitle1" noWrap>
                             facebook / create-react-app
                         </Typography>
@@ -50,19 +59,20 @@ function HeaderIssueRootDashboard() {
                     </Grid>
                 </Grid>
                 <Tabs
+                    value={value}
+                    onChange={handleChange}
                     variant="scrollable"
                     scrollButtons="on"
                     indicatorColor="primary"
                     textColor="primary"
                     aria-label="scrollable force tabs example"
                 >
-                    <Tab label="Item One" icon={<PhoneIcon />} />
-                    <Tab label="Item Two" icon={<FavoriteIcon />}  />
-                    <Tab label="Item Three" icon={<PersonPinIcon />}  />
-                    <Tab label="Item Four" icon={<HelpIcon />}  />
-                    <Tab label="Item Five" icon={<ShoppingBasket />}  />
-                    <Tab label="Item Six" icon={<ThumbDown />}  />
-                    <Tab label="Item Seven" icon={<ThumbUp />}  />
+                    <Tab label="Active"  />
+                    <Tab label="Active"  />
+                    <Tab label="Active"  />
+                    <Tab label="Active"  />
+                    <Tab label="Active"  />
+                    <Tab label="Active"  />
                 </Tabs>
             </Container>
         </React.Fragment>

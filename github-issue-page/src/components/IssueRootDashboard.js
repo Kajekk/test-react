@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import withStyles from "@material-ui/core/styles/withStyles";
 import HeaderIssueRootDashboard from "./HeaderIssueRootDashboard";
+import IssueDashboard from "./IssueDashBoard";
 
 const useStyles = theme => ({
     containerSection: {
@@ -26,6 +27,7 @@ function IssueRootDashboard() {
     return (
         <React.Fragment>
             <HeaderIssueRootDashboard />
+            <IssueDashboard />
         </React.Fragment>
     )
 }
