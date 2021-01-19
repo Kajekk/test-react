@@ -79,15 +79,16 @@ const useStyles = theme => ({
             height: 32,
             "& img": {
                 width: 32,
-                height: 32
+                height: 32,
+                color: "white"
             }
         },
         [theme.breakpoints.only("lg")]: {
-            width: 110,
-            height: 110,
+            width: 32,
+            height: 32,
             "& img": {
-                width: 60,
-                height: 60,
+                width: 32,
+                height: 32,
                 color: "white"
             }
         },

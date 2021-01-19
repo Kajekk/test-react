@@ -21,12 +21,15 @@ const useStyles = theme => ({
     margin: {
         margin: theme.spacing(1),
     },
+    normalBtn: {
+        textTransform: "none",
+    }
 })
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: green["800"],
+            main: green["600"],
         },
     },
 });
@@ -54,7 +57,7 @@ function IntroSection({classes}) {
                             Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
                         </Typography>
                         <ThemeProvider theme={theme}>
-                            <Button variant="contained" color="primary" className={classes.margin}>
+                            <Button variant="contained" color="primary" size="large" className={`${classes.margin} ${classes.normalBtn}`}>
                                 Read the guide
                             </Button>
                         </ThemeProvider>
