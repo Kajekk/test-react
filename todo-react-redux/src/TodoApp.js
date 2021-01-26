@@ -6,8 +6,8 @@ import {VISIBILITY_FILTERS} from "./constants";
 import "./styles.css";
 
 export default function TodoApp() {
-    const [todos, setTodos] = useState([])
-    const [currentFilter, setCurrentFilter] = useState(VISIBILITY_FILTERS.ALL)
+    // const [todos, setTodos] = useState([])
+    // const [currentFilter, setCurrentFilter] = useState(VISIBILITY_FILTERS.ALL)
     // const handleAddTodo = (todo) => {
     //     let newArray = [...todos];
     //     newArray.push({
@@ -18,15 +18,15 @@ export default function TodoApp() {
     //
     //     setTodos(newArray)
     // }
-    const submitFilter = (keyFilter) => {
-        setCurrentFilter(keyFilter)
-    }
+    // const submitFilter = (keyFilter) => {
+    //     setCurrentFilter(keyFilter)
+    // }
     return (
         <div className="todo-app">
             {/*<h1>Todo List</h1>*/}
             <AddTodo />
-            <TodoList todos={todos} currentFilter={currentFilter}/>
-            <VisibilityFilters submitFilter={submitFilter} />
+            <TodoList />
+            <VisibilityFilters />
         </div>
     )
 }

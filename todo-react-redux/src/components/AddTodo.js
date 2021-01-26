@@ -9,13 +9,8 @@ function AddTodo({ addTodo, updateInput}) {
     }
 
     const handleAddTodo = () => {
-        // dispatches actions to add todo
-        // this.props.addTodo(this.state.input)
-        // console.log(addTodo)
         addTodo(input)
         setInput('')
-        // sets state back to empty string
-        // this.setState({ input: '' })
     }
     return (
         <div>
